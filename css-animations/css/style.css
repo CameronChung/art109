@@ -1,0 +1,77 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    animation-name: wcolor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+p {
+    animation: 3s infinite alternate slidein;
+}
+
+@keyframes stretching {
+    0% {
+        width: 100px;
+    }
+    100%{
+        width: 100vw;
+    }
+}
+
+@keyframes bgcolor {
+    0% {
+        background-color: rgba(234, 198, 234, 0.988);
+    }
+    50%{
+        background-color: rgba(222, 118, 222, 0.988);
+    }
+    100%{
+        background-color: rgba(234, 23, 234, 0.988);
+    }
+}
+
+@keyframes wcolor {
+    0% {
+        background-color: rgba(234, 198, 220, 0.988);
+    }
+    50%{
+        background-color: rgba(231, 103, 193, 0.988);
+    }
+    100%{
+        background-color: rgba(234, 23, 132, 0.988);
+    }
+}
+
+.button{
+    display: inline-block;
+    background-color: rgba(234, 23, 234, 0.988);
+    animation-name: stretching, bgcolor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    height: 100px;
+}
+
+
