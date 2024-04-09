@@ -20,7 +20,8 @@ import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders
 
 
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
-let scene, camera, renderer, ball, dog;
+let scene, camera, renderer, ball, dog, mixer;
+let actionPant, actionTail;
 
 
 // ~~~~~~~~~~~~~~~~ Initialize Scene in init() ~~~~~~~~~~~~~~~~
@@ -85,7 +86,6 @@ function init() {
     ball = new THREE.Mesh(geometry, material);
     scene.add(ball);
 
-    let mixer;
     // --> Load glTF
 
     // load dog model
