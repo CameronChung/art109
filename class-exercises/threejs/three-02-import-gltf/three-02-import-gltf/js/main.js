@@ -96,16 +96,16 @@ function init() {
         dog.position.y = -2; // set initial position
 
         //animations
-        mixer = new THREE.AnimationMixer(model);
+        mixer = new THREE.AnimationMixer(dog);
         const clips = gltf.animations;
 
         //clips
         const clipPant = THREE.AnimationClip.findByName(clips, 'pant');
-        const actionPant = mixer.clipAction(clipPant);
-        actionPant.play();
+        actionPant = mixer.clipAction(clipPant);
+        // actionPant.play();
 
         const clipTail = THREE.AnimationClip.findByName(clips, 'tail');
-        const actionTail = mixer.clipAction(clipTail);
+        actionTail = mixer.clipAction(clipTail);
         actionTail.play();
     });
 
@@ -120,6 +120,29 @@ function init() {
 
     //event listeners
 
+    let mouseIsDown = false;
+
+    document.querySelector("body").addEventListener("mousedown", () => {
+        actionPant.play();
+        actionPant.paused = false;
+        mouseIsDown = true;
+        console.log("mousedown");
+    })
+
+    document.querySelector("body").addEventListener("mouseup", () => {
+        // actionPant.stop();
+        mouseIsDown = false;
+        actionPant.paused = true;
+        console.log("mouseup");
+    })
+
+    document.querySelector("body").addEventListener("mousemove", () => {
+        if(mouseIsDown){
+            console.log("mousemove");
+            ball.rotation.x += .5;
+        }
+    })
+
 
 // ~~~~~~~~~~~~~~~~ Animation Loop ~~~~~~~~~~~~~~~~
 // (similar to draw loop in p5.js, updates every frame)
@@ -129,13 +152,13 @@ function animate() {
 
     // →→→→→→ add your animation here ↓↓↓↓
 
-    // ball.rotation.x += 0.007;
-    // ball.rotation.y += 0.007;
+    ball.rotation.x += 0.007;
+    ball.rotation.y += 0.007;
 
 
-    // ball.position.x = Math.sin(Date.now() / 5000)* 2;
-    // ball.position.y = Math.sin(Date.now() / 3000)* 2;
-    // ball.position.z = Math.sin(Date.now() / 4000)* 2;
+    ball.position.x = Math.sin(Date.now() / 5000)* 2;
+    ball.position.y = Math.sin(Date.now() / 3000)* 2;
+    ball.position.z = Math.sin(Date.now() / 4000)* 2;
 
     if (dog) {
         // dog.rotation.x += 0.007;
