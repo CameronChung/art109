@@ -8,48 +8,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+      
+<!-- use an import map to link to the Three.js CDN -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+      }
+    }
+  </script>
+
+<!-- Link to your Javascript file as a type="module" -->
+<script type="module" src="js/main.js"></script>
+
+
   </head>
   <body class="home">
-    <!-- //  INTRO  // -->
     <div class="content-wrapper">
       <div class="content-bg">
         <header>
-          <!-- Start content edits below this line. -->
-          <h1>Cameron Chung</h1>
-          <h2>Digital Media Artist</h2>
 
-          <!-- End content edits here. -->
         </header>
 
-        <!-- //  ABOUT ME  // -->
-        <main>
-          <p>Meet Cameron Chung, a digital media artist that explores art through various programs like Max8, Blender, Adobe Substance 3D Painter, and p5.js, she uses different mediums to illustrate the intersecting field between art and technology.
-            From sculpting in the 3D universe with Blender to crafting vivid textures in Adobe Substance 3D Painter, Chung transforms imagination into virtual reality. 
-            The rhythm of her creativity extends to interactive web art, as they bind HTML, CSS, and Javascript to breathe life into pixels, inviting you to play in this digital playground.
-            In a world where art meets algorithms, Chung paints a vivid picture of her artwork on screen, where every click, scroll, and hover is a brushstroke in the canvas of her mind.</p>
 
-          <p>Thanks for stopping by!</p>
+        <main>
+
         </main>
       </div>
     </div>
-    <!-- //  FOOTER INFO, SOCIAL MEDIA  // -->
-    <footer>
-      <p>© 2024 by Cameron Chung |  <a href="mailto:email@example.com">email@example.com</a></p>
-
-      <ul class="socials">
-        <li>
-          <a href="https://ko-fi.com/christinatruong" target="_blank"><img src="images/icon-logo-ko-fi.png" alt="My Ko-Fi homepage"></a>
-        </li>
-        <li>
-          <a href="https://medium.com/@christinatruong" target="_blank"><img src="images/icon-logo-medium.png" alt="My Medium homepage"></a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/christina.is.online/" target="_blank"><img src="images/icon-logo-instagram.png" alt="My Instagram"></a>
-        </li>
-        <li>
-          <a href="https://ca.linkedin.com/in/christinatruong" target="_blank"><img src="images/icon-logo-linkedin.png" alt="My LinkedIn profile"></a>
-        </li>
-      </ul>
-    </footer>
   </body>
 </html>
