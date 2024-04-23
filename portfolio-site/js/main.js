@@ -49,7 +49,7 @@ function addStar(){
 
 Array(200).fill().forEach(addStar)
 
-const spaceTexture = new.THREE.TextureLoader().load('');
+const spaceTexture = new THREE.TextureLoader().load('');
 
 function animate(){
     requestAnimationFrame(animate);
