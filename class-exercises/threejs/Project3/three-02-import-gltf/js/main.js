@@ -1,7 +1,7 @@
 /* 
 glTF import:
 - glTF loader imported + enabled
--Global variable added to store dog gltf
+-Global variable added to store girl gltf
 -Two directional lights added to view glTF
 - Added HELPERS to debug light position (disable after you place them)
 -glTF imported from blender (not it is an *embedded* .glTF file, not .glb)
@@ -20,8 +20,10 @@ import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders
 
 
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
-let scene, camera, renderer, ball, dog, mixer;
-let actionPant, actionTail;
+let scene, camera, renderer, ball, girl, mixer;
+let actionRumba;
+
+
 
 
 // ~~~~~~~~~~~~~~~~ Initialize Scene in init() ~~~~~~~~~~~~~~~~
@@ -30,7 +32,7 @@ function init() {
     // ~~~~~~Set up scene, camera, + renderer ~~~~~~
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x015220);
+    scene.background = new THREE.Color(0x118788);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -73,12 +75,12 @@ function init() {
     // ~~~~~~ Create Geometry ~~~~~~
 
     // ---> create ball
-    const geometry = new THREE.SphereGeometry(.2, 32, 16);
+    const geometry = new THREE.SphereGeometry(.8, 32, 16);
 
     // -> change material from Basic to standard for geometry to capture lights
     // const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
 
-    const texture = new THREE.TextureLoader().load('textures/grasslight-big.jpg');
+    const texture = new THREE.TextureLoader().load('textures/multicolor.jpg');
 
     const material = new THREE.MeshStandardMaterial({ map: texture });
     // texture.minFilter = THREE.LinearFilter; // makes image sharper but aliased
@@ -88,27 +90,25 @@ function init() {
 
     // --> Load glTF
 
-    // load dog model
-    loader.load('assets/dog_shiny.gltf', function (gltf) {
-        dog = gltf.scene;
-        scene.add(dog);
-        dog.scale.set(2, 2, 2); // scale your model
-        dog.position.y = -2; // set initial position
+    // load girl model
+    loader.load('assets/scene.gltf', function (gltf) {
+        girl = gltf.scene;
+        scene.add(girl);
+        girl.scale.set(1, 1, 1); // scale your model
+        girl.position.y = -2; // set initial position
 
         //animations
-        mixer = new THREE.AnimationMixer(dog);
+        mixer = new THREE.AnimationMixer(girl);
         const clips = gltf.animations;
-
+        const clip = THREE.AnimationClip.findByName(clips, 'metarig|rumba');
+        const action = mixer.clipAction(clip);
+        action.play();
         //clips
-        const clipPant = THREE.AnimationClip.findByName(clips, 'pant');
-        actionPant = mixer.clipAction(clipPant);
-        // actionPant.play();
+        // const clipRumba = THREE.AnimationClip.findByName(clips, 'metarig|rumba');
+        // actionRumba = mixer.clipAction(clipRumba);
+        // actionRumba.play();
 
-        const clipTail = THREE.AnimationClip.findByName(clips, 'tail');
-        actionTail = mixer.clipAction(clipTail);
-        actionTail.play();
     });
-
 
 
 
@@ -118,30 +118,6 @@ function init() {
 
 }
 
-    //event listeners
-
-    let mouseIsDown = false;
-
-    document.querySelector("body").addEventListener("mousedown", () => {
-        actionPant.play();
-        actionPant.paused = false;
-        mouseIsDown = true;
-        console.log("mousedown");
-    })
-
-    document.querySelector("body").addEventListener("mouseup", () => {
-        // actionPant.stop();
-        mouseIsDown = false;
-        actionPant.paused = true;
-        console.log("mouseup");
-    })
-
-    document.querySelector("body").addEventListener("mousemove", () => {
-        if(mouseIsDown){
-            console.log("mousemove");
-            ball.rotation.x += .5;
-        }
-    })
 
 
 // ~~~~~~~~~~~~~~~~ Animation Loop ~~~~~~~~~~~~~~~~
@@ -160,16 +136,17 @@ function animate() {
     ball.position.y = Math.sin(Date.now() / 3000)* 2;
     ball.position.z = Math.sin(Date.now() / 4000)* 2;
 
-    if (dog) {
-        // dog.rotation.x += 0.007;
-        // dog.rotation.y += 0.007;
-        dog.rotation.y = Math.sin(Date.now() / 500)* .5;
+    if (girl) {
+        // girl.rotation.x += 0.007;
+        // girl.rotation.y += 0.007;
+        girl.rotation.y = Math.sin(Date.now() / 500)* .5;
     }
 
-    if(mixer)
+    if(mixer){
         mixer.update(clock.getDelta());
     // always end animation loop with renderer
     renderer.render(scene, camera);
+    }
 }
 
 function onWindowResize() {
