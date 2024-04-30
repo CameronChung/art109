@@ -20,7 +20,7 @@ import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders
 
 
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
-let scene, camera, renderer, ball, girl, mixer;
+let scene, camera, renderer, ball, girl, beach, mixer;
 let actionRumba;
 
 
@@ -90,9 +90,16 @@ function init() {
 
     // --> Load glTF
 
-    // load girl model
+    // load models
+    // loader.load('assets/beachScene.gltf', function (gltf){
+    //     beach = gltf.scene;
+    //     scene.add(beach);
+    //     beach.scale.set(2, 2, 2);
+    //     beach.position.y = -2;
+    // });
+
     loader.load('assets/scene.gltf', function (gltf) {
-        girl = gltf.scene;
+        const girl = gltf.scene;
         scene.add(girl);
         girl.scale.set(1, 1, 1); // scale your model
         girl.position.y = -2; // set initial position
@@ -107,8 +114,14 @@ function init() {
         // const clipRumba = THREE.AnimationClip.findByName(clips, 'metarig|rumba');
         // actionRumba = mixer.clipAction(clipRumba);
         // actionRumba.play();
-
+    }, undefined, function(error) {
+        console.error(error);
+    
     });
+    // loader.load('assets/beachScene.gltf', function (gltf){
+    //     const beach = gltf.scene;
+    //     scene.add(beach);
+    // });
 
 
 
