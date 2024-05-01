@@ -107,7 +107,7 @@ function init() {
         //animations
         mixer = new THREE.AnimationMixer(girl);
         const clips = gltf.animations;
-        const clip = THREE.AnimationClip.findByName(clips, 'metarig|rumba');
+        const clip = THREE.AnimationClip.findByName(clips, 'rumba');
         const action = mixer.clipAction(clip);
         action.play();
         //clips
@@ -118,10 +118,13 @@ function init() {
         console.error(error);
     
     });
-    // loader.load('assets/beachScene.gltf', function (gltf){
-    //     const beach = gltf.scene;
-    //     scene.add(beach);
-    // });
+
+    loader.load('assets/beachScene.gltf', function (gltf){
+        beach = gltf.scene;
+        scene.add(beach);
+        beach.scale.set(1, 1, 1); // scale your model
+        beach.position.y = -2; // set initial position
+    });
 
 
 
