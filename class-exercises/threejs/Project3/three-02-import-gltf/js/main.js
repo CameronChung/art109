@@ -110,11 +110,12 @@ function init() {
     
     });
 
-    loader.load('assets/beachScene.gltf', function (gltf){
+    loader.load('assets/at_a_beach/scene.gltf', function (gltf){
         beach = gltf.scene;
         scene.add(beach);
-        beach.scale.set(1, 1, 1); // scale your model
+        beach.scale.set(1.2, 1.2, 1.2); // scale your model
         beach.position.y = -2; // set initial position
+        beach.position.z = -4;
     });
 
 
@@ -135,8 +136,8 @@ function animate() {
 
     // →→→→→→ add your animation here ↓↓↓↓
 
-    ball.rotation.x += 0.007;
-    ball.rotation.y += 0.007;
+    ball.rotation.x += 0.009;
+    ball.rotation.y += 0.009;
 
 
     ball.position.x = Math.sin(Date.now() / 5000)* 2;
