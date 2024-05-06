@@ -32,7 +32,7 @@ function init() {
     // ~~~~~~Set up scene, camera, + renderer ~~~~~~
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x118788);
+    scene.background = new THREE.Color(0x058899);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -75,7 +75,7 @@ function init() {
     // ~~~~~~ Create Geometry ~~~~~~
 
     // ---> create ball
-    const geometry = new THREE.SphereGeometry(.8, 32, 16);
+    const geometry = new THREE.SphereGeometry(.5, 22, 16);
 
     // -> change material from Basic to standard for geometry to capture lights
     // const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
