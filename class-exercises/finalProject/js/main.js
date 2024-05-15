@@ -8,7 +8,7 @@ import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders
 
 
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
-let scene, camera, renderer, chair, beach, mixer;
+let scene, camera, renderer, desk, ball, beach, mixer;
 
 
 // ~~~~~~~~~~~~~~~~ Initialize Scene in init() ~~~~~~~~~~~~~~~~
@@ -53,14 +53,26 @@ function init() {
     const loader = new GLTFLoader(); // to load 3d models
 
     // --> Load glTF
+    // ---> create ball
+    const geometry = new THREE.SphereGeometry(.5, 22, 16);
 
+    // -> change material from Basic to standard for geometry to capture lights
+    // const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+
+    // const texture = new THREE.TextureLoader().load('textures/multicolor.jpg');
+
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+    // texture.minFilter = THREE.LinearFilter; // makes image sharper but aliased
+
+    ball = new THREE.Mesh(geometry, material);
+    scene.add(ball);
     // load models
 
-    loader.load('assets/chair/scene.gltf', function (gltf) {
-        chair = gltf.scene;
-        scene.add(chair);
-        chair.scale.set(1, 1, 1); // scale your model
-        chair.position.y = -2; // set initial position
+    loader.load('assets/pink_table/scene.gltf', function (gltf) {
+        desk = gltf.scene;
+        scene.add(desk);
+        desk.scale.set(10, 10, 10); // scale your model
+        desk.position.y = -2; // set initial position
 
     }, undefined, function(error) {
         console.error(error);

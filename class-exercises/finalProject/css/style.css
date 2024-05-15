@@ -3,6 +3,10 @@ html, body {
     height:100%;
   }
   
+canvas (
+    z-index: 2;
+)
+
   body {
       background: linear-gradient(-45deg, #F8C8DC, #D8BFD8, #FF69B4, #FFB6C1);
       background-size: 400% 400%;
