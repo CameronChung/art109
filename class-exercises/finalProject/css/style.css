@@ -3,16 +3,16 @@ html, body {
     height:100%;
   }
   
-canvas (
-    z-index: 2;
-)
 
   body {
       background: linear-gradient(-45deg, #F8C8DC, #D8BFD8, #FF69B4, #FFB6C1);
+      /* background-color: black;  */
+      font-size: xx-large;
       background-size: 400% 400%;
       animation: gradient 15s ease infinite;
   }
   
+
   @keyframes gradient {
       0% {
           background-position: 0% 50%;
@@ -24,3 +24,8 @@ canvas (
           background-position: 0% 50%;
       }
   }
+
+  canvas (
+    z-index: 2;
+)
+
