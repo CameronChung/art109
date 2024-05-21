@@ -113,12 +113,6 @@ loader.load('assets/little_cute_robot/scene.gltf', function (gltf){
     robot.position.z = -0.8;
     robot.position.x = -1.8;
     robot.rotation.y = 10;
-
-    mixer = new THREE.AnimationMixer(robot);
-    const clips = gltf.animations;
-    const clip = THREE.AnimationClip.findByName(clips, 'sway');
-    const action = mixer.clipAction(clip);
-    action.play();
 })
 
 //chair
@@ -203,7 +197,7 @@ function animate() {
 	requestAnimationFrame( animate );
 
 	chandelier.rotation.y += 0.01;
-
+    robot.rotation.y += 0.05;
      if(mixer){
         mixer.update(clock.getDelta());
     // always end animation loop with renderer
